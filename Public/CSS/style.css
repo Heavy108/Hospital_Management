@@ -50,7 +50,7 @@ body{
    border-radius: 8px;
    transition: all 0.5s ease-in-out; 
 }
-.menu li :hover, .active{
+.menu li :hover{
     background: #e0e0e058;
 }
 .menu a{
@@ -80,12 +80,12 @@ body{
     background:#ebe9e9;
     width: 100%;
     padding: 1rem;
-
-.bodyContent{
+}
+/* .bodyContent{
     display: flex;
     flex-direction: column;
-}
-}
+} */
+
 .header--wrapper img{
     width: 50px;
     height: 50px;
@@ -106,9 +106,10 @@ body{
 .header--title{
     color:rgba(113,99,186,255);
 }
-.user--info{
+.user-info{
 display: flex;
 align-items: center;
+flex-direction: row;
 gap: 1rem;
 
 }
@@ -122,9 +123,9 @@ gap: 1rem;
     padding: 4px 12px;
 
 }
-.search--box i :hover{
+/* .search--box i :hover{
     transform: scale(1.2);
-}
+} */
 
 /* -----------------------------------------------card conatiner---------------------------------------- */
 
@@ -260,7 +261,7 @@ gap: 1rem;
     display: flex;
     flex-wrap: wrap;
     flex-direction: row;
-    /* justify-content: center */
+    justify-content: center
    
 }
 .group{
@@ -272,7 +273,8 @@ gap: 1rem;
     border-radius: 10px;
     background-color: #fff;
     border-radius: 10px;
-    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+    /* box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px; */
+    box-shadow: rgba(0, 0, 0, 0.17) 0px -23px 25px 0px inset, rgba(0, 0, 0, 0.15) 0px -36px 30px 0px inset, rgba(0, 0, 0, 0.1) 0px -79px 40px 0px inset, rgba(0, 0, 0, 0.06) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
     width: 300px;
     height: 100px;
 }
@@ -301,3 +303,92 @@ th {
     /* background: linear-gradient(111deg, rgba(0,2,53,1) 49%, rgba(0,1,8,1) 100%); */
     background-image: radial-gradient( circle 759px at -6.7% 50%, rgba(80,131,73,1) 0%, rgba(140,209,131,1) 26.2%, rgba(178,231,170,1) 50.6%, rgba(144,213,135,1) 74.1%, rgba(75,118,69,1) 100.3% );
 }
+
+
+
+/* dropdowm */
+.autocomplete {
+    position: relative;
+    display: inline-block;
+}
+
+#referIdDropdown {
+    display: none;
+    position: absolute;
+    background-color: #f1f1f1;
+    /* min-width: 160px; */
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+}
+
+#referIdDropdown a {
+    padding: 12px 16px;
+    display: block;
+    color: black;
+    text-decoration: none;
+}
+
+#referIdDropdown a:hover {
+    background-color: #ddd;
+}
+
+/* ----------------patientid---------------- */
+#patientIdDropdown {
+    display: none;
+    position: absolute;
+    background-color: #f1f1f1;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+}
+
+#patientIdDropdown a {
+    padding: 12px 16px;
+    display: block;
+    color: black;
+    text-decoration: none;
+}
+
+#patientIdDropdown a:hover {
+    background-color: #ddd;
+}
+
+
+/* doctor */
+
+.DoctorContainer {
+    display: flex;
+      flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+  }
+  .Doctor {
+    /* box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px; */
+    /* box-shadow: rgba(0, 0, 0, 0.4) 0px 5px, rgba(0, 0, 0, 0.3) 0px 10px, rgba(0, 0, 0, 0.2) 0px 15px, rgba(0, 0, 0, 0.1) 0px 20px, rgba(0, 0, 0, 0.05) 0px 25px; */
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
+    /* box-shadow: rgba(240, 46, 170, 0.4) 0px 5px, rgba(240, 46, 170, 0.3) 0px 10px, rgba(240, 46, 170, 0.2) 0px 15px, rgba(240, 46, 170, 0.1) 0px 20px, rgba(240, 46, 170, 0.05) 0px 25px; */
+    background: #fff;
+      text-align: center;
+    border: 2px solid #ccc;
+      border-radius: 8px;
+    padding: 10px;
+    margin: 10px;
+    width: 20%; /* Adjust the width as needed */
+  }
+
+  .Doc_Ass{
+    
+    display: flex;
+    justify-content: center;
+    margin: 30px;
+      
+      
+  } 
+  .Doc_Ass h2{
+      font-size: 45px;
+      border: 2px solid black;
+      border-radius: 16px;
+      padding: 15px;
+      margin: 10px;
+  
+  }

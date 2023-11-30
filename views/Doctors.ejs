@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Doctors Details</title>
+    <link rel="stylesheet" href="./CSS/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+        integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+       
+</head>
+<body>
+    <%- include("partials/header.ejs") %>
+    <%- include("partials/tab.ejs") %>
+    <div class="DoctorContainer">
+        <% Doctors.forEach(item => { %>
+            <div class="Doctor">
+             <h3> Doctor_Id:<%= item.Doctor_Id %></h3>   
+            <h3><%= item. Doctor_Fname %></h3>  <h3><%= item. Doctor_Lname %></h3>         
+            <p>Specialization:<%= item.Department_Name  %></p>           
+            <p>Phone No: <%= item.Doctor_Phone_Number %></p>
+            </div>
+          <% }); %>
+    </div>
+</body>
+</html>

@@ -12,7 +12,7 @@
 </head>
 
 <body>
-<div id="header" ></div>
+    <%- include("partials/header.ejs") %>
     <div class="main--content">
         <div class="header--wrapper">
             <div class="header--title">
@@ -23,7 +23,7 @@
                 <div class="search--box"> <i class="fasolid fa-search"></i>
                     <input type="text" placeholder="Search">
                 </div>
-                <img src="" alt=""> <!-- add a image here -->
+                <img src="/images.jpg" alt=""> <!-- add a image here -->
 
             </div>
         </div>
@@ -38,8 +38,8 @@
                 <div class="card1">
                     <div class="card--header">
                         <div class="total">
-                            <span class="num"> 200</span>
-                            <span class="title">Total_Rooms</span>
+                            <span class="num"><%= data.roomCount%> </span>
+                            <span class="title">Occupied_Rooms</span>
                         </div>
                         <i class="fa-list-sign icon"></i>
                     </div>
@@ -49,7 +49,7 @@
                 <div class="card1">
                     <div class="card--header">
                         <div class="total">
-                            <span class="num"> 76</span>
+                            <span class="num"> <%= data.roomCount%></span>
                             <span class="title">Total_Doctors</span>
                         </div>
                         <i class="fa-list-sign icon"></i>
@@ -60,7 +60,7 @@
                 <div class="card1">
                     <div class="card--header">
                         <div class="total">
-                            <span class="num"> 156</span>
+                            <span class="num"> <%= data.staffCount%></span>
                             <span class="title">Hospital's Staff</span>
                         </div>
                         <i class="fa-list-sign icon"></i>
@@ -71,8 +71,8 @@
                 <div class="card1">
                     <div class="card--header">
                         <div class="total">
-                            <span class="num">234</span>
-                            <span class="title">Total_Patients</span>
+                            <span class="num"><%= data.patientCount%></span>
+                            <span class="title">Total_Admitted_Patients</span>
                         </div>
                         <i class="fa-list-sign icon"></i>
                     </div>
@@ -81,7 +81,7 @@
                 <div class="card1">
                     <div class="card--header">
                         <div class="total">
-                            <span class="num"> 20</span>
+                            <span class="num"><%= data.DeptCount%></span>
                             <span class="title">Total_Department</span>
                         </div>
                         <i class="fa-list-sign icon"></i>
@@ -94,7 +94,7 @@
         </div>
     </div>
 
-    <script src="./JS/script.js"></script>
+    <!-- <script src="./JS/script.js"></script> -->
 </body>
 
 </html>

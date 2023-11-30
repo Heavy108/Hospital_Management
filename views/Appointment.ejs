@@ -12,9 +12,9 @@
 </head>
 
 <body>
-    <div id="header" ></div>
-    <div class="bodyContent">
-        <div id="Hometab" class="main--content"></div>
+    <%- include("partials/header.ejs") %>
+ 
+        <%- include("partials/tab.ejs") %>
         <div>
             <form action="http://localhost:3000/Appointmentsubmit" method="post">
                 <div class="Form_container">
@@ -29,7 +29,7 @@
                     </div>
                     <div class="group " >
                         <label for="patientId">Patient ID</label>
-                        <input type="text" id="patientId" name="patientId"  required disabled>
+                        <input type="text" id="patientId" name="patientId"  required disabled >
                     </div>
 
                     <div class="group">
@@ -48,9 +48,13 @@
                     </div>
 
                     <div class="group">
-                        <input id="submit" type="submit" value="Submit">
+                        <input id="submitButton" type="submit" value="Submit">
                     </div>
                 </div>
+                
+                <script>
+                    document.getElementById('submitButton').addEventListener('click', submitForm);
+                  </script>
                 <script>
                     document.addEventListener("DOMContentLoaded", function () {
                         togglePatientIdInput(); // Initial call to set the visibility based on the default selection
@@ -71,13 +75,36 @@
                         document.getElementById("PatientType").addEventListener("change", togglePatientIdInput);
                     });
                 </script>
-                
+               
 
             </form>
         </div>
 
-        <div id="display"></div>
-    </div> 
+        <% if (appointments && appointments.length > 0) { %>
+            <table border="1">
+              <thead>
+                <tr>
+                  <th>Patient ID</th>
+                  <th>Doctor ID</th>
+                  <th>Appointment Date</th>
+                  <th>Appointment Time</th>
+                </tr>
+              </thead>
+              <tbody>
+                <% appointments.forEach(appointment => { %>
+                  <tr>
+                    <td><%= appointment.Patient_Id %></td>
+                    <td><%= appointment.Doctor_Id %></td>
+                    <td><%= appointment.Appointment_Date.toLocaleDateString() %></td>
+                    <td><%= appointment.Appointment_Time %></td>
+                  </tr>
+                <% }); %>
+              </tbody>
+            </table>
+          <% } else { %>
+            <p>No appointments available.</p>
+          <% } %>
+    
 
     <!----------------------------------------------- javascript ------------------------------------------------------------------------------->
     <script src="./JS/script.js"></script>

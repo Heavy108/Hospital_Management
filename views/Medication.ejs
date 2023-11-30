@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lab/medicine</title>
+    <link rel="stylesheet" href="./CSS/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+        integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+
+<body>
+    <%- include("partials/header.ejs") %>
+        <%- include("partials/tab.ejs") %>
+
+            <div>
+                <div class="Doc_Ass">
+                    <h2 >Medicine</h2>
+                </div>
+                <form action="http://localhost:3000/Medicine1" method="post">
+                    <div class="Form_container">
+                        <div class="group">
+                            <label for="patientId">Patient ID</label>
+                            <div class="autocomplete">
+
+                                <input type="text" id="patientId" name="patientId" autocomplete="off" placeholder="Type to search"
+                                    required>
+                                <div id="patientIdDropdown"></div>
+                            </div>
+                        </div>
+
+                        <div class="group">
+                            <label for="MedicineName">Medicine_Name</label>
+                            <input type="text" id="medicine" name="medicine" placeholder="medicine" required>
+                        </div>
+                        <div class="group">
+                            <input type="submit" value="Submit">
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+
+            <div>
+                <div class="Doc_Ass">
+                <h2 >Lab</h2>
+            </div>
+                <form action="http://localhost:3000/Lab" method="post">
+                    <div class="Form_container">
+                        <div class="group">
+                            <label for="patientId">Patient ID</label>
+                            <div class="autocomplete">
+
+                                <input type="text" id="patientId" name="patientId" placeholder="Type to search"
+                                    required>
+                                <div id="patientIdDropdown"></div>
+                            </div>
+                        </div>
+
+                        <div class="group">
+                            <label for="MedicineName">Lab Test</label>
+                            <div class="autocomplete">
+                                <input type="text" id="referId" name="Lab_Test" placeholder="Lab_Test" autocomplete="off">
+                                <div id="referIdDropdown"></div>
+                            </div>
+                        </div>
+                        <div class="group">
+                            <input type="submit" value="Submit">
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+
+            <script>
+                document.addEventListener("DOMContentLoaded", function () {
+                    const referIdInput = document.getElementById('referId');
+                    const referIdDropdown = document.getElementById('referIdDropdown');
+
+                    const patientIdInput = document.getElementById('patientId');
+                    const patientIdDropdown = document.getElementById('patientIdDropdown');
+
+                    const referIds = JSON.parse('<%- LabId %>');
+                    const patientIds = JSON.parse('<%- patientId %>');
+
+                    // Rest of your code...
+
+                    // Event listener for input changes for patientId
+                    patientIdInput.addEventListener('input', function () {
+                        const inputValue = patientIdInput.value.toLowerCase();
+                        const filteredPatientIds = patientIds.filter(id =>
+                            id.toLowerCase().includes(inputValue)
+                        );
+
+                        // Clear previous dropdown content
+                        patientIdDropdown.innerHTML = '';
+
+                        // Add filtered options to the dropdown
+                        filteredPatientIds.forEach(id => {
+                            const option = document.createElement('a');
+                            option.textContent = id;
+                            option.addEventListener('click', function () {
+                                patientIdInput.value = id;
+                                patientIdDropdown.style.display = 'none';
+                            });
+                            patientIdDropdown.appendChild(option);
+                        });
+                        referIdInput.addEventListener('input', function () {
+                            const inputValue = referIdInput.value.toLowerCase();
+                            const filteredReferIds = referIds.filter(id =>
+                                id.toLowerCase().includes(inputValue)
+                            );
+
+                            // Clear previous dropdown content
+                            referIdDropdown.innerHTML = '';
+
+                            // Add filtered options to the dropdown
+                            filteredReferIds.forEach(id => {
+                                const option = document.createElement('a');
+                                option.textContent = id;
+                                option.addEventListener('click', function () {
+                                    referIdInput.value = id;
+                                    referIdDropdown.style.display = 'none';
+                                });
+                                referIdDropdown.appendChild(option);
+                            });
+
+                            // Show the dropdown
+                            referIdDropdown.style.display = filteredReferIds.length > 0 ? 'block' : 'none';
+                        });
+
+                        // Show the dropdown
+                        patientIdDropdown.style.display = filteredPatientIds.length > 0 ? 'block' : 'none';
+                    });
+                    document.addEventListener('click', function (event) {
+                        if (!event.target.matches('#referId')) {
+                            referIdDropdown.style.display = 'none';
+                        }
+                    });
+                    document.addEventListener('click', function (event) {
+                        if (!event.target.matches('#patientId')) {
+                            patientIdDropdown.style.display = 'none';
+                        }
+                    });
+
+
+                    // Rest of your code...
+
+                });
+
+            </script>
+</body>
+
+</html>
